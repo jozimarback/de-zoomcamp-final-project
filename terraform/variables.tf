@@ -1,3 +1,9 @@
+locals {
+    labels = {
+        "project" = var.project
+    }
+}
+
 variable "project" {
     type= string
     description = "ID Google project"

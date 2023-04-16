@@ -6,7 +6,7 @@ data "archive_file" "trigger-dataproc-workflow-code-zip" {
 
 resource "google_storage_bucket_object" "trigger-dataproc-workflow-code" {
     name = "${data.archive_file.trigger-dataproc-workflow-code-zip.output_path}-${data.archive_file.trigger-dataproc-workflow-code-zip.output_sha}.zip"
-    buket = google_storage_bucket.code.name
+    bucket = google_storage_bucket.code.name
     source = data.archive_file.trigger-dataproc-workflow-code-zip.output_path
 }
 
@@ -21,6 +21,6 @@ resource "google_cloudfunctions_function" "trigger-dataproc-workflow" {
   environment_variables = {
     "REGION" = var.region
     "PROJECT_ID" = var.project
-    "DATAPROC_WORKFLOW" = google_dataproc_workflow_template.dataproc_average_years_schooling.name
+    "DATAPROC_WORKFLOW" = google_dataproc_workflow_template.dataproc-average-years-schooling.name
   }
 }

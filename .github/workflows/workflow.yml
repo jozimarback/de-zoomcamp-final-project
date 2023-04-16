@@ -90,7 +90,7 @@ jobs:
     - name: Terraform Plan
       run: terraform plan -input=false
       with:        
-          args: '-var="region=${{ vars.GCP_REGION }}" -var="project=${{ vars.GCP_PROJECT }}"'
+        args: '-var="region=${{ vars.GCP_REGION }}" -var="project=${{ vars.GCP_PROJECT }}"'
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
         KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}

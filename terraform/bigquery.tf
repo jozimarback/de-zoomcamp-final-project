@@ -32,7 +32,7 @@ resource "google_bigquery_table" "tb_average_years_schooling" {
         "name": "year",
         "description": "Year of medition",
         "type": "INTEGER"
-    },
+    }
   ]
 SCHEMA
   range_partitioning {

@@ -1,6 +1,6 @@
 locals {
     labels = {
-        "project" = var.project
+        "data-project" = var.data-project
     }
 }
 

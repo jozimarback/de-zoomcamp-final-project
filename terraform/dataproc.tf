@@ -42,7 +42,7 @@ resource "google_dataproc_workflow_template" "dataproc-average-years-schooling" 
         }
         gce_cluster_config {
           zone = ""
-          internal_ip_only = true
+          internal_ip_only = false
           service_account_scopes = [
             "https://www.googleapis.com/auth/cloud-platform"
           ]

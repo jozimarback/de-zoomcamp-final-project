@@ -16,13 +16,13 @@ resource "google_storage_bucket_object" "bootstrap" {
 
 
 resource "google_dataproc_workflow_template" "dataproc-average-years-schooling" {
-  name = "${var.data-project}-dataproc-average-years-schooling"
+  name = "${var.data-project}-avg-years-schooling"
   dag_timeout = "${60 * 60}s" # 1 hour
   location = var.region
   labels = local.labels
   placement {
     managed_cluster {
-      cluster_name = "${var.data-project}-dataproc-average-years-schooling"
+      cluster_name = "${var.data-project}-avg-years-schooling"
       config {
         staging_bucket = google_storage_bucket.tmp-dataproc.name
         temp_bucket = google_storage_bucket.tmp-dataproc.name

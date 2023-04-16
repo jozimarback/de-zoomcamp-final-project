@@ -20,6 +20,6 @@ resource "google_cloudfunctions_function" "trigger-dataproc-workflow" {
   source_archive_object = google_storage_bucket_object.trigger-dataproc-workflow-code.name
   environment_variables = {
     "REGION" = var.region
-    "DATAPROCWORKFLOW" = "google_dataproc_workflow_template..name"
+    # "DATAPROCWORKFLOW" = google_dataproc_workflow_template.dataproc_average_years_schooling.name
   }
 }

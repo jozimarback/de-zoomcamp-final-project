@@ -1,5 +1,5 @@
 resource "google_bigquery_dataset" "kaggle" {
-  project = var.projeto-dados
+  project = var.project
   dataset_id = "kaggle"
   description = "Kaggle extraction"
   labels = local.labels
@@ -7,7 +7,7 @@ resource "google_bigquery_dataset" "kaggle" {
 
 
 resource "google_bigquery_table" "tb_average_years_schooling" {
-  project = var.projeto-dados
+  project = var.project
   dataset_id = google_bigquery_dataset.kaggle.dataset_id
   table_id  = "tb_average_years_schooling"
   description = "Average years of Schooling"

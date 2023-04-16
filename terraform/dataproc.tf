@@ -46,7 +46,6 @@ resource "google_dataproc_workflow_template" "dataproc-average-years-schooling" 
           service_account_scopes = [
             "https://www.googleapis.com/auth/cloud-platform"
           ]
-          subnetwork = var.subnet
         }
         master_config {
           num_instances = 1

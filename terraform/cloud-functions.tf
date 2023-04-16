@@ -5,7 +5,7 @@ data "archive_file" "trigger-dataproc-workflow-code-zip" {
 }
 
 resource "google_storage_bucket_object" "trigger-dataproc-workflow-code" {
-    name = "${data.archive_file.trigger-dataproc-workflow-code-zip.name}-${data.archive_file.trigger-dataproc-workflow-code-zip.output_sha}.zip"
+    name = "${data.archive_file.trigger-dataproc-workflow-code-zip.output_path}-${data.archive_file.trigger-dataproc-workflow-code-zip.output_sha}.zip"
     buket = google_storage_bucket.code.name
     source = data.archive_file.trigger-dataproc-workflow-code-zip.output_path
 }

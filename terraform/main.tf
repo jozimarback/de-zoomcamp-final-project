@@ -1,5 +1,8 @@
 terraform {
-    backend "gcs" { }
+    backend "gcs" { 
+      bucket  = "terraform-state-jozimar-de-zoocamp"
+      prefix  = "prod"
+    }
 }
 
 provider "google" {

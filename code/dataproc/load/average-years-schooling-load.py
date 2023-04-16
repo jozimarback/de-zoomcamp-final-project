@@ -4,7 +4,7 @@ import sys
 
 __BUCKET_RAW = sys.argv[0]
 __TMP_BUCKET = sys.argv[1]
-__TABLE = sys.argv[2]
+__TABLE = f"{sys.argv[2]}.{sys.argv[3]}.{sys.argv[4]}"
 
 if __name__ == "__main__":
     spark = (

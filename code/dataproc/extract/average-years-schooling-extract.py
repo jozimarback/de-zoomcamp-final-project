@@ -7,8 +7,12 @@ from kaggle.api.kaggle_api_extend import KaggleApi
 from requests.adapters import HTTPAdapter, Retry
 import requests
 import sys
+import os
+
 
 __BUCKET_RAW = sys.argv[0]
+os.environ['KAGGLE_USERNAME'] = sys.argv[1]
+os.environ['KAGGLE_KEY'] = sys.argv[2]
 
 if __name__ == "__main__":
     spark = (

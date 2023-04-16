@@ -70,7 +70,7 @@ resource "google_dataproc_workflow_template" "dataproc-average-years-schooling" 
   jobs {
     step_id = "average-years-schooling-extract"
     pyspark_job {
-      main_python_file_uri = "gs://${google_storage_bucket.codigos.name}/dataproc/extract/average-years-schooling-extract.py"
+      main_python_file_uri = "gs://${google_storage_bucket.code.name}/dataproc/extract/average-years-schooling-extract.py"
       args = [
             google_storage_bucket.raw.name
             ,var.kaggle-username
@@ -82,7 +82,7 @@ resource "google_dataproc_workflow_template" "dataproc-average-years-schooling" 
     step_id = "average-years-schooling-load"
     prerequisite_step_ids = ["average-years-schooling-extract"]
     pyspark_job {
-      main_python_file_uri = "gs://${google_storage_bucket.codigos.name}/dataproc/load/average-years-schooling-load.py"
+      main_python_file_uri = "gs://${google_storage_bucket.code.name}/dataproc/load/average-years-schooling-load.py"
       args = [
           google_storage_bucket.raw.name
           ,google_storage_bucket.tmp-dataproc.name

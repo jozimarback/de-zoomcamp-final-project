@@ -10,7 +10,7 @@ resource "google_storage_bucket" "tmp-dataproc" {
   force_destroy = false
   uniform_bucket_level_access = true
   labels = local.labels
-  location = var.regiao
+  location = var.region
   lifecycle_rule {
     condition {
       age = 30

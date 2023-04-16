@@ -18,3 +18,13 @@ variable  "data-project" {
     type = string
     description = "Name data project"
 }
+
+variable  "kaggle-key" {
+    type = string
+    description = "Kaggle key user"
+}
+
+variable  "kaggle-username" {
+    type = string
+    description = "Kaggle user name"
+}

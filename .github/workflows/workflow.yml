@@ -73,27 +73,19 @@ jobs:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
-        tf_actions_working_dir: 'terraform'
-        args: '-var="region=${{ vars.GCP_REGION }}" -var="project=${{ vars.GCP_PROJECT }}"'
+        args: '-var="region=${{ vars.GCP_REGION }}" -var="project=${{ vars.GCP_PROJECT }}" -var="data-project=${{ vars.GCP_DATA_PROJECT }}" -var="kaggle-key=${{ secrets.KAGGLE_KEY }}"  -var="kaggle-username=${{ secrets.KAGGLE_USERNAME }}"'
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-        KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-        KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-        GCP_REGION: ${{ secrets.KAGGLE_USERNAME }}
-        GCP_PROJECT: ${{ secrets.KAGGLE_USERNAME }}
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
       # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
@@ -102,5 +94,3 @@ jobs:
       run: terraform apply -auto-approve -input=false
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-        KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-        KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}

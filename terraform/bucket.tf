@@ -6,7 +6,7 @@ resource "google_storage_bucket" "code" {
 }
 
 resource "google_storage_bucket" "tmp-dataproc" {
-  name = "${var.project}-tmp-dataproc"
+  name = "${var.data-project}-tmp-dataproc"
   force_destroy = false
   uniform_bucket_level_access = true
   labels = local.labels

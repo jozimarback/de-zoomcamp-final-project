@@ -7,7 +7,7 @@ import os
 
 _REGION = os.environ.get('REGION')
 _PROJECT_ID = os.environ.get('PROJECT_ID')
-_WORKFLOW_TEMPLATE = os.environ.get('WORKFOW_TEMPLATE')
+_WORKFLOW_TEMPLATE = os.environ.get('DATAPROC_WORKFLOW')
 
 def _check_execution(execution):
     """Check dataproc workflow execution

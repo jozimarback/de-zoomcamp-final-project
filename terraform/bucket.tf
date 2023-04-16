@@ -4,3 +4,19 @@ resource "google_storage_bucket" "code" {
     uniform_bucket_level_access = true
     location = var.region
 }
+
+resource "google_storage_bucket" "tmp-dataproc" {
+  name = "${var.project}-tmp-dataproc"
+  force_destroy = false
+  uniform_bucket_level_access = true
+  labels = local.labels
+  location = var.regiao
+  lifecycle_rule {
+    condition {
+      age = 30
+    }
+    action {
+      type = "Delete"
+    }
+  }
+}

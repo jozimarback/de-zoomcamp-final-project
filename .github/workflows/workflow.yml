@@ -72,14 +72,24 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
-      with:
-        args: '-var="region=${{ vars.GCP_REGION }}" -var="project=${{ vars.GCP_PROJECT }}" -var="data-project=${{ vars.GCP_DATA_PROJECT }}" -var="kaggle-key=${{ secrets.KAGGLE_KEY }}"  -var="kaggle-username=${{ secrets.KAGGLE_USERNAME }}"'
 
+    - name: Setup terraform variables
+      id: vars
+      run: |-
+        cat > pipeline.auto.tfvars <<EOF
+        region="${{ vars.GCP_REGION }}" 
+        project="${{ vars.GCP_PROJECT }}" 
+        data-project="${{ vars.GCP_DATA_PROJECT }}"
+        kaggle-key="${{ secrets.KAGGLE_KEY }}"  
+        kaggle-username="${{ secrets.KAGGLE_USERNAME }}"
+        EOF
+        
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
       env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
+
 
     # Generates an execution plan for Terraform
     - name: Terraform Plan

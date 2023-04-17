@@ -1,2 +1,2 @@
 pip install google-cloud-storage==1.38.0
-pip install kaggle==1.5.13
+pip install --user kaggle==1.5.13

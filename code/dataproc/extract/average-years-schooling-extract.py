@@ -2,6 +2,7 @@ from pyspark.sql import SparkSession, functions as f
 from pyspark.sql.types import *
 from google.cloud import storage
 
+from kaggle.api.kaggle_api_extend import KaggleApi
 from requests.adapters import HTTPAdapter, Retry
 import requests
 import sys
@@ -43,6 +44,5 @@ if __name__ == "__main__":
     create_kaggle_auth_file()     
     file = "mean-years-of-schooling-long-run.csv"
     
-    from kaggle.api.kaggle_api_extend import KaggleApi
     extract_kaggle_dataset(file)
     send_file_to_raw_bucket(file)

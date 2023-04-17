@@ -1,11 +1,13 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from google.cloud import storage
+import os
+import sys
+os.environ['KAGGLE_USERNAME'] = sys.argv[1]
+os.environ['KAGGLE_KEY'] = sys.argv[2]
 
 from kaggle.api.kaggle_api_extended import KaggleApi
 import logging
-import os
-import sys
 
 
 __BUCKET_RAW = sys.argv[0]

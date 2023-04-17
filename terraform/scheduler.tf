@@ -1,4 +1,6 @@
-data "google_compute_default_service_account" "default" {}
+data "google_compute_default_service_account" "default" {
+    project = var.project
+}
 resource "google_cloud_scheduler_job" "avg-years-schooling" {
   name = "${var.data-project}-avg-years-schooling"
   description = "Average years of schooling"

@@ -21,8 +21,6 @@ if __name__ == "__main__":
             .csv(f"gs://{__BUCKET_RAW}/csv/*.csv")
             .write.format("bigquery")
                     .mode('overwrite')
-                    .option('partitionType', 'INTEGER')
-                    .option('partitionField', 'Year')
                     .option("table", __TABLE)
                     .option("temporaryGcsBucket", __TMP_BUCKET)
                     .save()

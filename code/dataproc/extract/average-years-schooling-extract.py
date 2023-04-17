@@ -12,6 +12,8 @@ import os
 
 
 __BUCKET_RAW = sys.argv[0]
+os.environ["KAGGLE_USERNAME"] = sys.argv[1]
+os.environ["KAGGLE_KEY"] = sys.argv[2]
 
 if __name__ == "__main__":
     spark = (
@@ -26,7 +28,7 @@ if __name__ == "__main__":
     with open(f'{kaggle_json_dir}kaggle.json', 'w') as f:
         f.write(json.dumps({"username":sys.argv[1],"key":sys.argv[2]}))
     os.chmod(f'{kaggle_json_dir}kaggle.json', 600)  
-    
+
     api = KaggleApi()
     api.authenticate()
     file = "mean-years-of-schooling-long-run.csv"

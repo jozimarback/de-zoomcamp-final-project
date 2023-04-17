@@ -5,7 +5,10 @@ import os
 import sys
 os.environ['KAGGLE_USERNAME'] = sys.argv[1]
 os.environ['KAGGLE_KEY'] = sys.argv[2]
-
+import json
+with open('/root/.kaggle/kaggle.json', 'r') as handle:
+    print(json.load(handle))
+    
 from kaggle.api.kaggle_api_extended import KaggleApi
 import logging
 

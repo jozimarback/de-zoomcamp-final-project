@@ -40,13 +40,16 @@ def main(request):
 
     
     logging.info(f"Starting workflow {_WORKFLOW_TEMPLATE}")
-    execution = client.instantiate_workflow_template(
-        name = name,
-        parameters = {}
-    )
+    try:
+        execution = client.instantiate_workflow_template(
+            name = name,
+            parameters = {}
+        )       
     
-   
-    _check_execution(execution)
-    execution.result()    
+        _check_execution(execution)
+        execution.result()  
+    except Exception as e:
+        raise e
+
     
     logging.info(f'Workflow {_WORKFLOW_TEMPLATE} started ({datetime.utcnow() - start})')

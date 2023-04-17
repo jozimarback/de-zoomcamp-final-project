@@ -16,6 +16,7 @@ resource "google_cloudfunctions_function" "trigger-dataproc-workflow" {
   entry_point = "main"
   trigger_http = true
   available_memory_mb = 256
+  timeout = 540
   source_archive_bucket = google_storage_bucket.code.name
   source_archive_object = google_storage_bucket_object.trigger-dataproc-workflow-code.name
   environment_variables = {

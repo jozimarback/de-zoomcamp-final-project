@@ -19,6 +19,12 @@ if __name__ == "__main__":
             .option("header",True)
             .option("delimiter",';')
             .csv(f"gs://{__BUCKET_RAW}/csv/*.csv")
+            .select(
+                f.col("Entity").alias("entity"),
+                f.col("Code").alias("code"),
+                f.col("Year").alias("year"),
+                "avg_years_of_schooling"
+            )
             .write.format("bigquery")
                     .mode('overwrite')
                     .option("table", __TABLE)

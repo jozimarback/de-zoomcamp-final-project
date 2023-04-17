@@ -1,7 +1,6 @@
 from pyspark.sql import SparkSession, functions as f
 from pyspark.sql.types import *
 from google.cloud import storage
-import kaggle
 from kaggle.api.kaggle_api_extend import KaggleApi
 
 from requests.adapters import HTTPAdapter, Retry

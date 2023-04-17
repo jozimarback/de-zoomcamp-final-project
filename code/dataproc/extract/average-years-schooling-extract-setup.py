@@ -9,7 +9,7 @@ def create_kaggle_auth_file():
     kaggle_json_dir = '/root/.kaggle'
     os.makedirs(kaggle_json_dir, exist_ok=True)
     with open(f'{kaggle_json_dir}/kaggle.json', 'w') as file:
-        json.dump({'username':sys.argv[0],'key':sys.argv[1]}, file)
+        json.dump({'username':sys.argv[1],'key':sys.argv[2]}, file)
     os.chmod(f'{kaggle_json_dir}/kaggle.json', 600)
    
     if not os.path.isfile('/root/.kaggle/kaggle.json'):

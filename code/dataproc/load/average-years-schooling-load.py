@@ -2,9 +2,9 @@ from pyspark.sql import SparkSession, functions as f
 from pyspark.sql.types import *
 import sys
 
-__BUCKET_RAW = sys.argv[0]
-__TMP_BUCKET = sys.argv[1]
-__TABLE = f"{sys.argv[2]}.{sys.argv[3]}.{sys.argv[4]}"
+__BUCKET_RAW = sys.argv[1]
+__TMP_BUCKET = sys.argv[2]
+__TABLE = f"{sys.argv[3]}.{sys.argv[4]}.{sys.argv[5]}"
 
 if __name__ == "__main__":
     spark = (

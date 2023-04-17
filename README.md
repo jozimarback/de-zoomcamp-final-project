@@ -1,20 +1,24 @@
-# de-zoomcaamp-final-project
-Data Enginier Zoomcamp
+# Data Engineer Zoomcamp Final Project
+
+This project is a data engineering pipeline with data about education from Kaggle dataset.
 
 ## Dataset
 
-https://www.kaggle.com/datasets/fredericksalazar/average-years-of-schooling-since-1870-2017
-https://ourworldindata.org/global-education
+The [dataset](https://www.kaggle.com/datasets/fredericksalazar/average-years-of-schooling-since-1870-2017) contains information about the average years of schooling sonce 1870 to 2017 in countries around the world.
 
 ### Pipeline
-TODO:
 
-- [ ] Cloud schedule weekly
-- [ ] Cloud Function download data.
-- [ ] Save as parquet/DW table
-- [ ] Create infra terraform
-- [ ] Dataproc job/ Final DW table
-- [ ] Looker dashboard
+![pipeline](./docs/pipeline.png)
+
+### Report
+
+Selecting a year from the filter.
+
+![report-1](./docs/report-1.png)
+
+Selecting multiple years from the filter and some countries from the graph.
+
+![report-2](./docs/report-2.png)
 
 # Achive steps
 

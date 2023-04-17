@@ -7,12 +7,11 @@ from kaggle.api.kaggle_api_extend import KaggleApi
 from requests.adapters import HTTPAdapter, Retry
 import requests
 import sys
+import json
 import os
 
 
 __BUCKET_RAW = sys.argv[0]
-os.environ['KAGGLE_USERNAME'] = sys.argv[1]
-os.environ['KAGGLE_KEY'] = sys.argv[2]
 
 if __name__ == "__main__":
     spark = (
@@ -20,6 +19,11 @@ if __name__ == "__main__":
         .appName("Average years schooling extract")
         .getOrCreate()
     )
+    kaggle_json_dir = '/root/.kaggle/'
+    if not os.path.exists(kaggle_json_dir):
+        os.makedirs(kaggle_json_dir) 
+    with open(f'{kaggle_json_dir}kaggle.json', 'w') as f:
+            f.write(json.dumps({"username":sys.argv[1],"key":sys.argv[2]}))
     api = KaggleApi()
     api.authenticate()
     file = "mean-years-of-schooling-long-run.csv"

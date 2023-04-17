@@ -19,15 +19,12 @@ def _check_execution(execution):
         Exception: Except in case job isn't running
     """
 
-    # Aguarda o início da execução do primeiro job
     job_running = False
     state_running = 3
     while execution.running() and not job_running:
         job_running = any([job.state == state_running for job in execution.metadata.graph.nodes])
         sleep(2)
 
-    if not job_running:
-        raise Exception(execution.exception())
 
 def main(request):
     """_summary_
@@ -47,7 +44,9 @@ def main(request):
         name = name,
         parameters = {}
     )
+    
+   
     _check_execution(execution)
-
+    execution.result()    
     
     logging.info(f'Workflow {_WORKFLOW_TEMPLATE} started ({datetime.utcnow() - start})')

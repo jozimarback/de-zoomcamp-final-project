@@ -12,7 +12,6 @@ import logging
 
 __BUCKET_RAW = sys.argv[0]
 
-
 def extract_kaggle_dataset(file):  
     api = KaggleApi()
     api.authenticate()

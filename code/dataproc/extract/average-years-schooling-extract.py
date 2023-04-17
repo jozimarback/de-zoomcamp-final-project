@@ -3,17 +3,12 @@ from pyspark.sql.types import *
 from google.cloud import storage
 import os
 import sys
-# os.environ['KAGGLE_USERNAME'] = sys.argv[2]
-# os.environ['KAGGLE_KEY'] = sys.argv[3]
-import json
-with open('/root/.kaggle/kaggle.json', 'r') as handle:
-    print(json.load(handle))
 
 from kaggle.api.kaggle_api_extended import KaggleApi
 import logging
 
 
-__BUCKET_RAW = sys.argv[0]
+__BUCKET_RAW = sys.argv[1]
 
 def extract_kaggle_dataset(file):  
     api = KaggleApi()

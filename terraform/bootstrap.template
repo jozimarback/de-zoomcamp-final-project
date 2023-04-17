@@ -1,2 +1,3 @@
+export KAGGLE_CONFIG_DIR=/opt/kaggle
 pip install google-cloud-storage==1.38.0
 pip install --user kaggle==1.5.13

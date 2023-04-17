@@ -6,7 +6,7 @@ from pathlib import Path
 import sys
 
 def create_kaggle_auth_file():
-    kaggle_json_dir = Path('/root/.kaggle')
+    kaggle_json_dir = Path('/opt/kaggle')
     os.makedirs(kaggle_json_dir, exist_ok=True)
     with open(f'{kaggle_json_dir}/kaggle.json', 'w') as file:
         json.dump({'username':sys.argv[0],'key':sys.argv[1]}, file)

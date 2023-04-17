@@ -1,9 +1,9 @@
-import logging
 from pyspark.sql import SparkSession
 from pyspark.sql.types import *
 from google.cloud import storage
 
-from kaggle.api.kaggle_api_extend import KaggleApi
+from kaggle.api.kaggle_api_extended import KaggleApi
+import logging
 import os
 import sys
 
@@ -11,7 +11,7 @@ import sys
 __BUCKET_RAW = sys.argv[0]
 
 
-def extract_kaggle_dataset(file):    
+def extract_kaggle_dataset(file):  
     api = KaggleApi()
     api.authenticate()
     api.dataset_download_file("fredericksalazar/average-years-of-schooling-since-1870-2017",

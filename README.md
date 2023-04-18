@@ -1,25 +1,27 @@
 # Data Engineer Zoomcamp Final Project
 
-This project is a data engineering pipeline with data about education from Kaggle dataset.
+This project is a data engineering pipeline with data about education around the world in more than 100 years of history from Kaggle dataset. 
+
+Education is widely accepted to be a fundamental resource, both for individuals and societies. Indeed, in most countries basic education is nowadays perceived not only as a right, but also as a duty – governments are typically expected to ensure access to basic education, while citizens are often required by law to attain education up to a certain basic level.
+
+The data on the production of education shows that schooling tends to be largely financed with public resources across the globe, although a great deal of heterogeneity is observed between countries and world regions.
 
 ## Dataset
 
-The [dataset](https://www.kaggle.com/datasets/fredericksalazar/average-years-of-schooling-since-1870-2017) contains information about the average years of schooling sonce 1870 to 2017 in countries around the world.
+The [kaggle dataset](https://www.kaggle.com/datasets/fredericksalazar/average-years-of-schooling-since-1870-2017) contains information about the average years of schooling since 1870 to 2017 in countries around the world. The source of kaggle dataset DataSet is downloaded from https://ourworldindata.org/global-education.
 
 ### Pipeline
 
 ![pipeline](./docs/pipeline.png)
 
-### Report
+The pipeline starts with a cloud scheduler cron witch trigger a cloud function.
 
-Selecting a year from the filter.
+Inside the cloud function there is a logic to call a dataproc workflow that processes a ETL over data collected from kaggle dataset. The ETL process stores raw data(csv) in the cloud storage and ingest the csv file into BigQuery.
+
+A dashboard was created with the data stored in BigQuery.
+
+### Dashboard
+
+In the dashboard we are able to filter by year and average year of schooling. We can also filter by country selecting countries on the map.
 
 ![report-1](./docs/report-1.png)
-
-Selecting multiple years from the filter and some countries from the graph.
-
-![report-2](./docs/report-2.png)
-
-# Achive steps
-
-https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/week_7_project/README.md

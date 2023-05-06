@@ -18,10 +18,13 @@ The pipeline starts with a cloud scheduler cron witch trigger a cloud function.
 
 Inside the cloud function there is a logic to call a dataproc workflow that processes a ETL over data collected from kaggle dataset. The ETL process stores raw data(csv) in the cloud storage and ingest the csv file into BigQuery.
 
-A dashboard was created with the data stored in BigQuery.
+A dashboard was created with the data stored in BigQuery partitioned by year.
 
 ### Dashboard
 
 In the dashboard we are able to filter by year and average year of schooling. We can also filter by country selecting countries on the map.
-
+[Link](https://lookerstudio.google.com/reporting/95836a41-cbea-4e48-8ebf-202f89b22f34/page/wF8MD)
 ![report-1](./docs/report-1.png)
+
+To reproduce this project you can use github actions.
+Learn more [here on my blog](https://jozimarback.medium.com/using-github-actions-with-terraform-on-gcp-d473a37ddbd6)
